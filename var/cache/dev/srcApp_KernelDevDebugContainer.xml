@@ -22,6 +22,7 @@
       <parameter key="TwigExtraBundle">Twig\Extra\TwigExtraBundle\TwigExtraBundle</parameter>
       <parameter key="WebServerBundle">Symfony\Bundle\WebServerBundle\WebServerBundle</parameter>
       <parameter key="DoctrineFixturesBundle">Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle</parameter>
+      <parameter key="BootstrapMenuBundle">Camurphy\BootstrapMenuBundle\BootstrapMenuBundle</parameter>
     </parameter>
     <parameter key="kernel.bundles_metadata" type="collection">
       <parameter key="FrameworkBundle" type="collection">
@@ -75,6 +76,10 @@
       <parameter key="DoctrineFixturesBundle" type="collection">
         <parameter key="path">/Users/alexandrelaferrere/Desktop/TSP/Cours/Informatique/CSC_4101/Projet/proj-agvoy/agvoy-app/vendor/doctrine/doctrine-fixtures-bundle</parameter>
         <parameter key="namespace">Doctrine\Bundle\FixturesBundle</parameter>
+      </parameter>
+      <parameter key="BootstrapMenuBundle" type="collection">
+        <parameter key="path">/Users/alexandrelaferrere/Desktop/TSP/Cours/Informatique/CSC_4101/Projet/proj-agvoy/agvoy-app/vendor/camurphy/bootstrap-menu-bundle</parameter>
+        <parameter key="namespace">Camurphy\BootstrapMenuBundle</parameter>
       </parameter>
     </parameter>
     <parameter key="kernel.charset">UTF-8</parameter>
@@ -254,6 +259,20 @@
     <parameter key="security.authentication.session_strategy.strategy">migrate</parameter>
     <parameter key="security.access.always_authenticate_before_granting">false</parameter>
     <parameter key="security.authentication.hide_user_not_found">true</parameter>
+    <parameter key="bootstrap_menu.menus" type="collection">
+      <parameter key="main" type="collection">
+        <parameter key="items" type="collection">
+          <parameter key="rooms" type="collection">
+            <parameter key="label">Chambres</parameter>
+            <parameter key="route">room_index</parameter>
+            <parameter key="is_divider">false</parameter>
+            <parameter key="route_parameters" type="collection"/>
+            <parameter key="roles" type="collection"/>
+            <parameter key="items" type="collection"/>
+          </parameter>
+        </parameter>
+      </parameter>
+    </parameter>
     <parameter key="data_collector.templates" type="collection">
       <parameter key="data_collector.request" type="collection">
         <parameter>request</parameter>
@@ -1228,7 +1247,7 @@
       <argument></argument>
     </service>
     <service id="assets._default_package" class="Symfony\Component\Asset\PathPackage" public="false">
-      <argument></argument>
+      <argument>/startbootstrap-shop-homepage-gh-pages</argument>
       <argument type="service" id="assets.empty_version_strategy"/>
       <argument type="service" id="assets.context"/>
     </service>
@@ -1708,6 +1727,8 @@
           <argument>/Users/alexandrelaferrere/Desktop/TSP/Cours/Informatique/CSC_4101/Projet/proj-agvoy/agvoy-app/src/Resources/WebServerBundle/translations</argument>
           <argument>/Users/alexandrelaferrere/Desktop/TSP/Cours/Informatique/CSC_4101/Projet/proj-agvoy/agvoy-app/vendor/doctrine/doctrine-fixtures-bundle/translations</argument>
           <argument>/Users/alexandrelaferrere/Desktop/TSP/Cours/Informatique/CSC_4101/Projet/proj-agvoy/agvoy-app/src/Resources/DoctrineFixturesBundle/translations</argument>
+          <argument>/Users/alexandrelaferrere/Desktop/TSP/Cours/Informatique/CSC_4101/Projet/proj-agvoy/agvoy-app/vendor/camurphy/bootstrap-menu-bundle/translations</argument>
+          <argument>/Users/alexandrelaferrere/Desktop/TSP/Cours/Informatique/CSC_4101/Projet/proj-agvoy/agvoy-app/src/Resources/BootstrapMenuBundle/translations</argument>
           <argument>/Users/alexandrelaferrere/Desktop/TSP/Cours/Informatique/CSC_4101/Projet/proj-agvoy/agvoy-app/src/Resources/translations</argument>
         </argument>
         <argument key="cache_vary" type="collection">
@@ -1742,6 +1763,8 @@
             <argument>src/Resources/WebServerBundle/translations</argument>
             <argument>vendor/doctrine/doctrine-fixtures-bundle/translations</argument>
             <argument>src/Resources/DoctrineFixturesBundle/translations</argument>
+            <argument>vendor/camurphy/bootstrap-menu-bundle/translations</argument>
+            <argument>src/Resources/BootstrapMenuBundle/translations</argument>
             <argument>src/Resources/translations</argument>
           </argument>
         </argument>
@@ -3116,6 +3139,9 @@
       <call method="addExtension">
         <argument type="service" id="doctrine.twig.doctrine_extension"/>
       </call>
+      <call method="addExtension">
+        <argument type="service" id="camurphy.bootstrap_menu.twig.menu_extension"/>
+      </call>
       <call method="addGlobal">
         <argument>app</argument>
         <argument type="service" id="twig.app_variable"/>
@@ -3231,6 +3257,14 @@
       <call method="addPath">
         <argument>/Users/alexandrelaferrere/Desktop/TSP/Cours/Informatique/CSC_4101/Projet/proj-agvoy/agvoy-app/vendor/symfony/security-bundle/Resources/views</argument>
         <argument>!Security</argument>
+      </call>
+      <call method="addPath">
+        <argument>/Users/alexandrelaferrere/Desktop/TSP/Cours/Informatique/CSC_4101/Projet/proj-agvoy/agvoy-app/vendor/camurphy/bootstrap-menu-bundle/Resources/views</argument>
+        <argument>BootstrapMenu</argument>
+      </call>
+      <call method="addPath">
+        <argument>/Users/alexandrelaferrere/Desktop/TSP/Cours/Informatique/CSC_4101/Projet/proj-agvoy/agvoy-app/vendor/camurphy/bootstrap-menu-bundle/Resources/views</argument>
+        <argument>!BootstrapMenu</argument>
       </call>
       <call method="addPath">
         <argument>/Users/alexandrelaferrere/Desktop/TSP/Cours/Informatique/CSC_4101/Projet/proj-agvoy/agvoy-app/templates</argument>
@@ -4901,6 +4935,10 @@
     </service>
     <service id="doctrine.fixtures.purger.orm_purger_factory" class="Doctrine\Bundle\FixturesBundle\Purger\ORMPurgerFactory" public="false">
       <tag name="doctrine.fixtures.purger_factory" alias="default"/>
+    </service>
+    <service id="camurphy.bootstrap_menu.twig.menu_extension" class="Camurphy\BootstrapMenuBundle\Twig\Extension\MenuExtension" public="false">
+      <tag name="twig.extension"/>
+      <argument>%bootstrap_menu.menus%</argument>
     </service>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\AgVoyController" class="App\Controller\AgVoyController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\AgVoyController" class="App\Controller\AgVoyController" autowire="true" abstract="true"/>

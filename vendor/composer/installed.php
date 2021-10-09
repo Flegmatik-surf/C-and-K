@@ -1,22 +1,31 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => NULL,
+        'reference' => '0ad30aa769a2e3e832d5e9ba58ee1a2b1e33b2cd',
         'name' => '__root__',
         'dev' => true,
     ),
     'versions' => array(
         '__root__' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => NULL,
+            'reference' => '0ad30aa769a2e3e832d5e9ba58ee1a2b1e33b2cd',
+            'dev_requirement' => false,
+        ),
+        'camurphy/bootstrap-menu-bundle' => array(
+            'pretty_version' => '1.2.1',
+            'version' => '1.2.1.0',
+            'type' => 'symfony-bundle',
+            'install_path' => __DIR__ . '/../camurphy/bootstrap-menu-bundle',
+            'aliases' => array(),
+            'reference' => '2ea32d43695a9a0509d39139a0e1172dc6e52157',
             'dev_requirement' => false,
         ),
         'composer/package-versions-deprecated' => array(

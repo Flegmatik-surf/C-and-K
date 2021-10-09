@@ -6,11 +6,13 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use App\Entity\Region;
 use App\Entity\Room;
+use App\Entity\Owner;
 
 class AppFixtures extends Fixture
 {
     // définit un nom de référence pour une instance de Region
     public const IDF_REGION_REFERENCE = 'idf-region';
+    public const ALEX_OWNER_REFERENCE = 'alex-owner';
     
     public function load(ObjectManager $manager)
     {
@@ -29,6 +31,15 @@ class AppFixtures extends Fixture
         $this->addReference(self::IDF_REGION_REFERENCE, $region);
         
         // ...
+        $owner = new Owner();
+        $owner->setFamilyName("LAFERRERE");
+        $owner->setFirstname("Alexandre");
+        $owner->setAddress("6 rue Charles Fourier");
+        $owner->setCountry("FR");
+        $this->addReference(self::ALEX_OWNER_REFERENCE, $owner);
+        $manager->persist($owner);
+        
+        $manager->flush();
         
         $room = new Room();
         $room->setSummary("Beau poulailler ancien à Évry");
@@ -42,9 +53,11 @@ class AppFixtures extends Fixture
         // enregistrée précédamment, ce qui permet d'éviter de se
         // tromper d'instance de Region :
         $room->addRegion($this->getReference(self::IDF_REGION_REFERENCE));
+        $room->setOwner($this->getReference(self::ALEX_OWNER_REFERENCE));
         $manager->persist($room);
         
         $manager->flush();
+        
         
         //...
     }

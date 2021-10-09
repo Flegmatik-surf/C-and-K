@@ -1,0 +1,7 @@
+bootstrap_menu:
+    menus:
+        main:
+            items:
+                rooms:
+                    label: 'Chambres'
+                    route: 'room_index'

@@ -2,11 +2,34 @@
 
 {% block title %}Liste des couettes & cafés!{% endblock %}
 
-{% block body %}
+{% block main %}
 
     <h1>Liste des Rooms ! ✅</h1>
-    {% for room in rooms %}
-    <p> La chambre "{{ room.summary }}" a pour id :{{ room.id }} </p>
-    {% endfor %}
-
+    
+    <table class="table">
+    	<thead>
+    		<tr>
+    			<th>Id</th>
+    			<th>Résumé</th>
+    			<th>Capacité</th>
+    			<th>Superficie</th>
+    			<th>Prix</th>
+    			<th>Adresse</th>
+    			<td> &nbsp;</td>
+    		</tr>
+    	</thead>
+    	<tbody>
+    		<tr>
+                {% for room in rooms %}
+                <td>{{ room.id }}</td>
+                <td>{{ room.summary ? room.summary : '' }}</td>
+                <td>{{ room.capacity}}</td>
+                <td>{{ room.superficy}}</td>
+                <td>{{ room.price}}</td>
+                <td>{{ room.address}}</td>
+                <td><a href = "{{ path('room_show', {'id': room.id}) }}">Voir</a></td>
+                {% endfor %}
+            </tr>
+        </tbody>
+	</table>
 {% endblock %}

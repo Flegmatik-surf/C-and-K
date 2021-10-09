@@ -2,8 +2,32 @@
 
 {% block title %}Room !{% endblock %}
 
-{% block body %}
+{% block main %}
 
-    <h1> Caractérsitiques de {{ room.summary }} ✅</h1>
+    <h1> Caractéristiques : "{{ room.summary ? room.summary : '' }}" ✅</h1>
+    
+    <img src="" alt="description vide de l'image"> <p>Ici il y aura une image :) </p>
+    
+    <ul>
+    	<li>Description : {{ room.description ? room.description : 'Pas de description' }}</li>
+    	<li>Adresse : {{ room.address }}</li>
+    	<li>Nombre de places : {{ room.capacity }}</li>
+    	<li>Superficie : {{ room.superficy }}</li>
+    	<li>Prix : {{ room.price }}</li>
+    	<!-- régler le problème de la virgule qui traine à la fin de la liste des régions -->
+    	<li>Région(s) : {% for region in room.regions %}{{ region.name }}, {% endfor %}</li>
+    </ul>
+    
+    <h2>Propriétaire :</h2>
+    <ul>
+    	<li>M/Mme : {{ room.owner.familyName }}</li>
+    	<li>{{ room.owner.firstName }}</li>
+    	<li>{{ room.owner.country }}</li>
+    </ul>
+    <!-- Le bouton mènera vers un formulaire de réservation ? -->
+    <p><button>Réserver</button></p>
+    
+    <a href="{{ path('room_index') }}">Retour à liste des chambres</a>
+    
 
 {% endblock %}

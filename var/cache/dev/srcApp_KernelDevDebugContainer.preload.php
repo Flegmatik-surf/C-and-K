@@ -10,7 +10,7 @@ if (in_array(PHP_SAPI, ['cli', 'phpdbg'], true)) {
 }
 
 require dirname(__DIR__, 3).'/vendor/autoload.php';
-require __DIR__.'/ContainerI96jrmf/srcApp_KernelDevDebugContainer.php';
+require __DIR__.'/ContainerWGGp9OC/srcApp_KernelDevDebugContainer.php';
 
 $classes = [];
 $classes[] = 'Symfony\Bundle\FrameworkBundle\FrameworkBundle';
@@ -26,6 +26,7 @@ $classes[] = 'Symfony\Bundle\SecurityBundle\SecurityBundle';
 $classes[] = 'Twig\Extra\TwigExtraBundle\TwigExtraBundle';
 $classes[] = 'Symfony\Bundle\WebServerBundle\WebServerBundle';
 $classes[] = 'Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle';
+$classes[] = 'Camurphy\BootstrapMenuBundle\BootstrapMenuBundle';
 $classes[] = 'Symfony\Component\HttpClient\TraceableHttpClient';
 $classes[] = 'Symfony\Contracts\HttpClient\HttpClientInterface';
 $classes[] = 'Symfony\Component\HttpClient\HttpClient';
@@ -448,6 +449,7 @@ $classes[] = 'Symfony\Bridge\Twig\Extension\SecurityExtension';
 $classes[] = 'Symfony\Bundle\WebProfilerBundle\Twig\WebProfilerExtension';
 $classes[] = 'Symfony\Component\VarDumper\Dumper\HtmlDumper';
 $classes[] = 'Doctrine\Bundle\DoctrineBundle\Twig\DoctrineExtension';
+$classes[] = 'Camurphy\BootstrapMenuBundle\Twig\Extension\MenuExtension';
 $classes[] = 'Symfony\Bridge\Twig\AppVariable';
 $classes[] = 'Twig\RuntimeLoader\ContainerRuntimeLoader';
 $classes[] = 'Twig\Extra\TwigExtraBundle\MissingExtensionSuggestor';

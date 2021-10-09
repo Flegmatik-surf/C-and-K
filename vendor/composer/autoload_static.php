@@ -151,6 +151,10 @@ class ComposerStaticInita5918f8be6b4fb733b4656df729bd4f7
             'Doctrine\\Bundle\\DoctrineBundle\\' => 31,
             'DeepCopy\\' => 9,
         ),
+        'C' => 
+        array (
+            'Camurphy\\BootstrapMenuBundle\\' => 29,
+        ),
         'A' => 
         array (
             'App\\Tests\\' => 10,
@@ -566,6 +570,10 @@ class ComposerStaticInita5918f8be6b4fb733b4656df729bd4f7
         'DeepCopy\\' => 
         array (
             0 => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy',
+        ),
+        'Camurphy\\BootstrapMenuBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/camurphy/bootstrap-menu-bundle',
         ),
         'App\\Tests\\' => 
         array (

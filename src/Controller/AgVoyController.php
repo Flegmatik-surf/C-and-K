@@ -38,9 +38,16 @@ class AgVoyController extends AbstractController
     
     /**
      * @Route("/room/{id}", name="room_show", requirements={ "id": "\d+"}, methods="GET")
+     *
+     * @param Integer $id
      */
-    public function showRoom($room): Response
+    public function showRoom($id): Response
     {
+        $em = $this->getDoctrine()->getManager();
+        $roomRepository = $em->getRepository(Room::class);
+        $room = $roomRepository->findOneBy([
+            'id' => $id
+        ]);
         //visiblement mettre uniqument l'id de la room dans l'url ne suffit pas
         //Peut être est-ce lié à un fichier de config inconnu encore
         //en attendant il faut modifier pour faire un filtrage classique.
