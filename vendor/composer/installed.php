@@ -1,22 +1,22 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => 'dev-master',
-        'version' => 'dev-master',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '0ad30aa769a2e3e832d5e9ba58ee1a2b1e33b2cd',
+        'reference' => '863026cb46eafe34185f641e6aa2f02540030853',
         'name' => '__root__',
         'dev' => true,
     ),
     'versions' => array(
         '__root__' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '0ad30aa769a2e3e832d5e9ba58ee1a2b1e33b2cd',
+            'reference' => '863026cb46eafe34185f641e6aa2f02540030853',
             'dev_requirement' => false,
         ),
         'camurphy/bootstrap-menu-bundle' => array(
@@ -215,6 +215,15 @@
             'install_path' => __DIR__ . '/../friendsofphp/proxy-manager-lts',
             'aliases' => array(),
             'reference' => '006aa5d32f887a4db4353b13b5b5095613e0611f',
+            'dev_requirement' => false,
+        ),
+        'jms/metadata' => array(
+            'pretty_version' => '2.5.1',
+            'version' => '2.5.1.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../jms/metadata',
+            'aliases' => array(),
+            'reference' => 'a995e6cef6d6f56a6226e1616a519630e2ef0aeb',
             'dev_requirement' => false,
         ),
         'laminas/laminas-code' => array(
@@ -980,6 +989,15 @@
                 0 => '*',
             ),
         ),
+        'symfony/polyfill-intl-grapheme' => array(
+            'pretty_version' => 'v1.23.1',
+            'version' => '1.23.1.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/polyfill-intl-grapheme',
+            'aliases' => array(),
+            'reference' => '16880ba9c5ebe3642d1995ab866db29270b36535',
+            'dev_requirement' => false,
+        ),
         'symfony/polyfill-intl-icu' => array(
             'pretty_version' => 'v1.23.0',
             'version' => '1.23.0.0',
@@ -1193,6 +1211,15 @@
             'reference' => 'c85d997af06a58ba83e2d2538e335b894c24523d',
             'dev_requirement' => false,
         ),
+        'symfony/string' => array(
+            'pretty_version' => 'v5.3.7',
+            'version' => '5.3.7.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/string',
+            'aliases' => array(),
+            'reference' => '8d224396e28d30f81969f083a58763b8b9ceb0a5',
+            'dev_requirement' => false,
+        ),
         'symfony/translation' => array(
             'pretty_version' => 'v4.4.30',
             'version' => '4.4.30.0',
@@ -1323,6 +1350,15 @@
             'install_path' => __DIR__ . '/../twig/twig',
             'aliases' => array(),
             'reference' => 'a27fa056df8a6384316288ca8b0fa3a35fdeb569',
+            'dev_requirement' => false,
+        ),
+        'vich/uploader-bundle' => array(
+            'pretty_version' => '1.18.0',
+            'version' => '1.18.0.0',
+            'type' => 'symfony-bundle',
+            'install_path' => __DIR__ . '/../vich/uploader-bundle',
+            'aliases' => array(),
+            'reference' => 'c5250c8d6a072960250ce5130e68a5693b3b48dd',
             'dev_requirement' => false,
         ),
         'webmozart/assert' => array(
