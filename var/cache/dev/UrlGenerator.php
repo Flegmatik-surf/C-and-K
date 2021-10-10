@@ -28,6 +28,7 @@ return [
     'region_delete' => [['id'], ['_controller' => 'App\\Controller\\RegionController::delete'], [], [['variable', '/', '[^/]++', 'id'], ['text', '/region']], [], []],
     'room_index' => [[], ['_controller' => 'App\\Controller\\RoomController::index'], [], [['text', '/room/']], [], []],
     'room_new' => [[], ['_controller' => 'App\\Controller\\RoomController::new'], [], [['text', '/room/new']], [], []],
+    'room_addtoowner' => [['id'], ['_controller' => 'App\\Controller\\RoomController::addToowner'], [], [['variable', '/', '[^/]++', 'id'], ['text', '/room/addtoowner']], [], []],
     'room_show' => [['id'], ['_controller' => 'App\\Controller\\RoomController::show'], [], [['variable', '/', '[^/]++', 'id'], ['text', '/room']], [], []],
     'room_edit' => [['id'], ['_controller' => 'App\\Controller\\RoomController::edit'], [], [['text', '/edit'], ['variable', '/', '[^/]++', 'id'], ['text', '/room']], [], []],
     'room_delete' => [['id'], ['_controller' => 'App\\Controller\\RoomController::delete'], [], [['variable', '/', '[^/]++', 'id'], ['text', '/room']], [], []],

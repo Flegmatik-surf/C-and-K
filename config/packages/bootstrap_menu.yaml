@@ -2,6 +2,9 @@ bootstrap_menu:
     menus:
         main:
             items:
+                owners:
+                    label: 'Propriétaires'
+                    route: 'owner_index'
                 regions:
                     label: 'Régions'
                     route: 'region_index'

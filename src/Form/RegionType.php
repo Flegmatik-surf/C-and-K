@@ -15,7 +15,6 @@ class RegionType extends AbstractType
             ->add('name')
             ->add('presentation')
             ->add('country')
-            ->add('rooms')
         ;
     }
 

@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Room;
+use App\Entity\Owner;
 use App\Form\RoomType;
 use App\Repository\RoomRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -45,6 +46,36 @@ class RoomController extends AbstractController
         }
 
         return $this->render('room/new.html.twig', [
+            'room' => $room,
+            'form' => $form->createView(),
+        ]);
+    }
+    
+    /**
+     * @Route("/addtoowner/{id}", name="room_addtoowner", methods="GET|POST")
+     */
+    public function addToowner(Request $request, Owner $owner): Response
+    {
+        $room = new Room();
+        $room->setOwner($owner);
+        
+        $form = $this->createForm(RoomType::class, $room,
+        ['display_owner' => false]
+            );
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($room);
+            $em->flush();
+            
+            $this->get('session')->getFlashBag()->add('message', 'Chambre bien assignée au propriétaire');
+            
+            return $this->redirectToRoute('owner_show', array('id' => $owner->getId() ));
+        }
+        
+        return $this->render('room/add.html.twig', [
+            'owner' => $owner,
             'room' => $room,
             'form' => $form->createView(),
         ]);

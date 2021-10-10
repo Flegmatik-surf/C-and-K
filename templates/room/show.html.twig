@@ -33,6 +33,36 @@
             </tr>
         </tbody>
     </table>
+    
+    <br>
+    <h3>Région(s): </h3>
+    
+    {% if room.regions == null %}
+    <p>Aucune région pour l'instant</p>
+    {% else %}
+    	<table class="table table-borderless">
+    		<tbody>
+            {% for region in room.regions %}
+        		<tr>
+        			<td>{{ region.name }}<td>
+        			<td><a href="{{ path('region_show', {'id': region.id}) }}" class='btn btn-outline-info'>Voir la région</a>
+        		</tr>
+            {% endfor %}
+        	</tbody>
+        </table>
+    {% endif %}
+    
+    
+    <h3>Propriétaire :</h3>
+    <ul>
+    	<li>Nom : {{ room.owner.familyName }}</li>
+    	{% if room.owner.firstName != null %}
+    	<li>Prénom : {{ room.owner.firstName }}</li>
+    	{% endif %}
+    	{% if room.owner.country != null %}
+    	<li>Code Pays : {{ room.owner.country }}</li>
+    	{% endif %}
+    </ul>
 
     <a href="{{ path('room_index') }}" class='btn btn-outline-dark'>Retour à la liste</a>
 

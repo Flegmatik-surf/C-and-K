@@ -29,6 +29,30 @@
             </tr>
         </tbody>
     </table>
+    <br>
+    <h3>Liste des chambres : </h3>
+    
+    {% if owner.rooms == null %}
+    <p>Aucune chambre pour l'instant</p>
+    {% endif %}
+    <table class="table table-borderless">
+    	<tbody>
+        {% for room in owner.rooms %}
+        	<tr>
+        		<td>{{ room.summary }}<td>
+        		<td><a href="{{ path('room_show', {'id': room.id}) }}" class='btn btn-outline-info'>Voir la chambre</a></td>
+        	</tr>
+        {% endfor %}
+        	<tr>
+				<td><a href="{{ path('room_addtoowner', {'id': owner.id}) }}" class='btn btn-outline-success'>Ajouter une chambre</a></td>
+          	</tr>
+        </tbody>
+	</table>
+ 
+    
+     
+    
+    
 
     <a href="{{ path('owner_index') }}" class='btn btn-outline-dark'>Retour à la liste</a>
 

@@ -49,10 +49,13 @@ return [
                         .'|/edit(*:252)'
                         .'|(*:260)'
                     .')'
-                    .'|oom/([^/]++)(?'
-                        .'|(*:284)'
-                        .'|/edit(*:297)'
-                        .'|(*:305)'
+                    .'|oom/(?'
+                        .'|addtoowner/([^/]++)(*:295)'
+                        .'|([^/]++)(?'
+                            .'|(*:314)'
+                            .'|/edit(*:327)'
+                            .'|(*:335)'
+                        .')'
                     .')'
                 .')'
             .')/?$}sD',
@@ -71,9 +74,10 @@ return [
         239 => [[['_route' => 'region_show', '_controller' => 'App\\Controller\\RegionController::show'], ['id'], ['GET' => 0], null, false, true, null]],
         252 => [[['_route' => 'region_edit', '_controller' => 'App\\Controller\\RegionController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
         260 => [[['_route' => 'region_delete', '_controller' => 'App\\Controller\\RegionController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
-        284 => [[['_route' => 'room_show', '_controller' => 'App\\Controller\\RoomController::show'], ['id'], ['GET' => 0], null, false, true, null]],
-        297 => [[['_route' => 'room_edit', '_controller' => 'App\\Controller\\RoomController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        305 => [
+        295 => [[['_route' => 'room_addtoowner', '_controller' => 'App\\Controller\\RoomController::addToowner'], ['id'], ['GET' => 0, 'POST' => 1], null, false, true, null]],
+        314 => [[['_route' => 'room_show', '_controller' => 'App\\Controller\\RoomController::show'], ['id'], ['GET' => 0], null, false, true, null]],
+        327 => [[['_route' => 'room_edit', '_controller' => 'App\\Controller\\RoomController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        335 => [
             [['_route' => 'room_delete', '_controller' => 'App\\Controller\\RoomController::delete'], ['id'], ['POST' => 0], null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],

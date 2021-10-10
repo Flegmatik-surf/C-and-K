@@ -21,6 +21,24 @@
             </tr>
         </tbody>
     </table>
+    
+    <br>
+    <h3>Chambres de la région : </h3>
+    
+    {% if region.rooms == null %}
+    <p>Aucune chambre pour l'instant</p>
+    {% else %}
+    	<table class="table table-borderless">
+    		<tbody>
+            {% for room in region.rooms %}
+        		<tr>
+        			<td>{{ room.summary }}<td>
+        			<td><a href="{{ path('room_show', {'id': room.id}) }}" class='btn btn-outline-info'>Voir la chambre</a>
+        		</tr>
+            {% endfor %}
+        	</tbody>
+        </table>
+    {% endif %}
 
     <a href="{{ path('region_index') }}" class='btn btn-outline-dark'>Retour à la liste</a>
 

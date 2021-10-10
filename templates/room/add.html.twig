@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle chambre{% endblock %}
+
+{% block main %}
+    <h1>Créer une nouvelle chambre</h1>
+
+    {{ include('room/_form.html.twig') }}
+
+    <a href="{{ path('owner_show', {'id': owner.id}) }}" class='btn btn-outline-dark'>Retour</a>
+{% endblock %}

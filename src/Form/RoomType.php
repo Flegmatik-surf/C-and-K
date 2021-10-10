@@ -18,15 +18,19 @@ class RoomType extends AbstractType
             ->add('superficy')
             ->add('price')
             ->add('address')
-            ->add('regions')
-            ->add('owner')
-        ;
+            ->add('regions');
+        
+            if($options['display_owner']){
+                $builder->add('owner');
+            }
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
             'data_class' => Room::class,
+            'display_owner' => true
         ]);
+        $resolver->setAllowedTypes('display_owner', 'bool');
     }
 }

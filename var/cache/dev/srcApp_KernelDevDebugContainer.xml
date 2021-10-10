@@ -263,6 +263,14 @@
     <parameter key="bootstrap_menu.menus" type="collection">
       <parameter key="main" type="collection">
         <parameter key="items" type="collection">
+          <parameter key="owners" type="collection">
+            <parameter key="label">Propriétaires</parameter>
+            <parameter key="route">owner_index</parameter>
+            <parameter key="is_divider">false</parameter>
+            <parameter key="route_parameters" type="collection"/>
+            <parameter key="roles" type="collection"/>
+            <parameter key="items" type="collection"/>
+          </parameter>
           <parameter key="regions" type="collection">
             <parameter key="label">Régions</parameter>
             <parameter key="route">region_index</parameter>
@@ -5326,7 +5334,7 @@
         <argument key="room" type="service_closure" id=".errored..service_locator.TBpXroA.App\Entity\Room"/>
       </argument>
     </service>
-    <service id=".service_locator.8QJm_1U" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.ywMeHaI" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\OwnerController::delete" type="service_closure" id=".service_locator.Ti2bmpQ"/>
@@ -5337,6 +5345,7 @@
         <argument key="App\Controller\RegionController::edit" type="service_closure" id=".service_locator..2bsJdj"/>
         <argument key="App\Controller\RegionController::index" type="service_closure" id=".service_locator.p4kW4vn"/>
         <argument key="App\Controller\RegionController::show" type="service_closure" id=".service_locator..2bsJdj"/>
+        <argument key="App\Controller\RoomController::addToowner" type="service_closure" id=".service_locator.Ti2bmpQ"/>
         <argument key="App\Controller\RoomController::delete" type="service_closure" id=".service_locator.TBpXroA"/>
         <argument key="App\Controller\RoomController::edit" type="service_closure" id=".service_locator.TBpXroA"/>
         <argument key="App\Controller\RoomController::index" type="service_closure" id=".service_locator.zcKkgoO"/>
@@ -5349,6 +5358,7 @@
         <argument key="App\Controller\RegionController:edit" type="service_closure" id=".service_locator..2bsJdj"/>
         <argument key="App\Controller\RegionController:index" type="service_closure" id=".service_locator.p4kW4vn"/>
         <argument key="App\Controller\RegionController:show" type="service_closure" id=".service_locator..2bsJdj"/>
+        <argument key="App\Controller\RoomController:addToowner" type="service_closure" id=".service_locator.Ti2bmpQ"/>
         <argument key="App\Controller\RoomController:delete" type="service_closure" id=".service_locator.TBpXroA"/>
         <argument key="App\Controller\RoomController:edit" type="service_closure" id=".service_locator.TBpXroA"/>
         <argument key="App\Controller\RoomController:index" type="service_closure" id=".service_locator.zcKkgoO"/>
@@ -5819,12 +5829,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.8QJm_1U"/>
+      <argument type="service" id=".service_locator.ywMeHaI"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.8QJm_1U"/>
+      <argument type="service" id=".service_locator.ywMeHaI"/>
     </service>
     <service id=".debug.http_client.inner" class="Symfony\Contracts\HttpClient\HttpClientInterface" public="false">
       <argument type="collection"/>
@@ -6231,7 +6241,7 @@
     <service id="Symfony\Component\Security\Core\User\UserCheckerInterface" alias="security.user_checker" public="false"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.CmORmuK" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.8QJm_1U"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.ywMeHaI"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
     <service id="Psr\Log\LoggerInterface $consoleLogger" alias="monolog.logger.console"/>
