@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau propriétaire{% endblock %}
+
+{% block main %}
+    <h1>Créer un nouveau propiétaire</h1>
+
+    {{ include('owner/_form.html.twig') }}
+
+    <a href="{{ path('owner_index') }}" class='btn btn-outline-dark'>Retour à la liste</a>
+{% endblock %}

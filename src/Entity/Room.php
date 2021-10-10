@@ -20,7 +20,7 @@ class Room
     private $id;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="text")
      */
     private $summary;
 
@@ -175,5 +175,9 @@ class Room
         $this->owner = $owner;
 
         return $this;
+    }
+    
+    public function __toString(){
+        return $this->id . ': ' . $this->summary;
     }
 }

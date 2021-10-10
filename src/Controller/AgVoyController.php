@@ -25,23 +25,23 @@ class AgVoyController extends AbstractController
     }
     
     /**
-     * @Route("/room/list", name="room_index", methods="GET")
+     * @Route("/room/list", name="room_index_old", methods="GET")
      */
-    public function indexRoom(): Response
+    /**public function indexRoom(): Response
     {
         $em = $this->getDoctrine()->getManager();
         $rooms = $em->getRepository(Room::class)->findAll();
         return $this->render('ag_voy/room/index.html.twig', [
             'rooms' => $rooms
         ]);
-    }
+    }*/
     
     /**
-     * @Route("/room/{id}", name="room_show", requirements={ "id": "\d+"}, methods="GET")
+     * @Route("/room/{id}", name="room_show_old", requirements={ "id": "\d+"}, methods="GET")
      *
      * @param Integer $id
      */
-    public function showRoom($id): Response
+    /**public function showRoom($id): Response
     {
         $em = $this->getDoctrine()->getManager();
         $roomRepository = $em->getRepository(Room::class);
@@ -54,5 +54,5 @@ class AgVoyController extends AbstractController
         return $this->render('ag_voy/room/show.html.twig', [
             'room' => $room
         ]);
-    }
+    }*/
 }

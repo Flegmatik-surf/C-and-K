@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des régions{% endblock %}
+
+{% block main %}
+    <h1>Liste des régions</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Présentation</th>
+                <th>Pays</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for region in regions %}
+            <tr>
+                <td>{{ region.id }}</td>
+                <td>{{ region.name }}</td>
+                <td>{{ region.presentation }}</td>
+                <td>{{ region.country }}</td>
+                <td>
+                    <a href="{{ path('region_show', {'id': region.id}) }}" class='btn btn-outline-info'>Voir</a>
+                    <a href="{{ path('region_edit', {'id': region.id}) }}" class='btn btn-outline-secondary'>Editer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">Aucune région trouvée</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('region_new') }}" class='btn btn-success'>Creér une nouvelle région</a>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edition chambre{% endblock %}
+
+{% block main %}
+    <h1>Edition de la chambre</h1>
+
+    {{ include('room/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+
+    <a href="{{ path('room_index') }}" class='btn btn-outline-dark'>Retour à la liste</a>
+
+    {{ include('room/_delete_form.html.twig') }}
+{% endblock %}

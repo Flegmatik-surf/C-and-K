@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Proprio{% endblock %}
+
+{% block main %}
+    <h1>Edition du Propriétaire</h1>
+
+    {{ include('owner/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+
+    <a href="{{ path('owner_index') }}" class='btn btn-outline-dark'>Retour à la liste</a>
+
+    {{ include('owner/_delete_form.html.twig') }}
+{% endblock %}

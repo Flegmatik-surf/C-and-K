@@ -158,6 +158,7 @@
     <parameter key="twig.exception_listener.controller">null</parameter>
     <parameter key="twig.form.resources" type="collection">
       <parameter>form_div_layout.html.twig</parameter>
+      <parameter>bootstrap_4_layout.html.twig</parameter>
     </parameter>
     <parameter key="twig.default_path">/Users/alexandrelaferrere/Desktop/TSP/Cours/Informatique/CSC_4101/Projet/proj-agvoy/agvoy-app/templates</parameter>
     <parameter key="web_profiler.debug_toolbar.intercept_redirects">false</parameter>
@@ -262,6 +263,14 @@
     <parameter key="bootstrap_menu.menus" type="collection">
       <parameter key="main" type="collection">
         <parameter key="items" type="collection">
+          <parameter key="regions" type="collection">
+            <parameter key="label">Régions</parameter>
+            <parameter key="route">region_index</parameter>
+            <parameter key="is_divider">false</parameter>
+            <parameter key="route_parameters" type="collection"/>
+            <parameter key="roles" type="collection"/>
+            <parameter key="items" type="collection"/>
+          </parameter>
           <parameter key="rooms" type="collection">
             <parameter key="label">Chambres</parameter>
             <parameter key="route">room_index</parameter>
@@ -369,8 +378,38 @@
         <argument type="service" id=".service_locator.vdmMuyE.App\Controller\AgVoyController"/>
       </call>
     </service>
+    <service id="App\Controller\OwnerController" class="App\Controller\OwnerController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.vdmMuyE.App\Controller\OwnerController"/>
+      </call>
+    </service>
+    <service id="App\Controller\RegionController" class="App\Controller\RegionController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.vdmMuyE.App\Controller\RegionController"/>
+      </call>
+    </service>
+    <service id="App\Controller\RoomController" class="App\Controller\RoomController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.vdmMuyE.App\Controller\RoomController"/>
+      </call>
+    </service>
     <service id="App\DataFixtures\AppFixtures" class="App\DataFixtures\AppFixtures" autowire="true" autoconfigure="true">
       <tag name="doctrine.fixture.orm"/>
+    </service>
+    <service id="App\Form\OwnerType" class="App\Form\OwnerType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\RegionType" class="App\Form\RegionType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\RoomType" class="App\Form\RoomType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
     </service>
     <service id="App\Repository\OwnerRepository" class="App\Repository\OwnerRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
@@ -794,9 +833,13 @@
       <argument type="service" id="form.registry"/>
       <argument type="collection">
         <argument>Symfony\Component\Form\Extension\Core\Type</argument>
+        <argument>App\Form</argument>
         <argument>Symfony\Bridge\Doctrine\Form\Type</argument>
       </argument>
       <argument type="collection">
+        <argument>App\Form\OwnerType</argument>
+        <argument>App\Form\RegionType</argument>
+        <argument>App\Form\RoomType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FormType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\ChoiceType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FileType</argument>
@@ -1130,7 +1173,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension" public="false">
-      <argument type="service" id=".service_locator.SFX6J7Y"/>
+      <argument type="service" id=".service_locator.6esiSvW"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -4943,8 +4986,23 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\AgVoyController" class="App\Controller\AgVoyController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\AgVoyController" class="App\Controller\AgVoyController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\AgVoyController" class="App\Controller\AgVoyController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\OwnerController" class="App\Controller\OwnerController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\OwnerController" class="App\Controller\OwnerController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\OwnerController" class="App\Controller\OwnerController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\RegionController" class="App\Controller\RegionController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\RegionController" class="App\Controller\RegionController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\RegionController" class="App\Controller\RegionController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\RoomController" class="App\Controller\RoomController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\RoomController" class="App\Controller\RoomController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\RoomController" class="App\Controller\RoomController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\FixturesBundle\ORMFixtureInterface.0.App\DataFixtures\AppFixtures" class="App\DataFixtures\AppFixtures" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\DataFixtures\AppFixtures" class="App\DataFixtures\AppFixtures" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\OwnerType" class="App\Form\OwnerType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\OwnerType" class="App\Form\OwnerType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\RegionType" class="App\Form\RegionType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\RegionType" class="App\Form\RegionType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\RoomType" class="App\Form\RoomType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\RoomType" class="App\Form\RoomType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\OwnerRepository" class="App\Repository\OwnerRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\OwnerRepository" class="App\Repository\OwnerRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\RegionRepository" class="App\Repository\RegionRepository" autowire="true" abstract="true"/>
@@ -5232,9 +5290,70 @@
         <argument>make:migration</argument>
       </call>
     </service>
-    <service id=".service_locator.I3K77mT" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.VueqrAN" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
-      <argument type="collection"/>
+      <argument type="collection">
+        <argument key="ownerRepository" type="service_closure" id="App\Repository\OwnerRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.Ti2bmpQ" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="owner" type="service_closure" id=".errored..service_locator.Ti2bmpQ.App\Entity\Owner"/>
+      </argument>
+    </service>
+    <service id=".service_locator.p4kW4vn" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="regionRepository" type="service_closure" id="App\Repository\RegionRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator..2bsJdj" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="region" type="service_closure" id=".errored..service_locator..2bsJdj.App\Entity\Region"/>
+      </argument>
+    </service>
+    <service id=".service_locator.zcKkgoO" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="roomRepository" type="service_closure" id="App\Repository\RoomRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.TBpXroA" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="room" type="service_closure" id=".errored..service_locator.TBpXroA.App\Entity\Room"/>
+      </argument>
+    </service>
+    <service id=".service_locator.8QJm_1U" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="App\Controller\OwnerController::delete" type="service_closure" id=".service_locator.Ti2bmpQ"/>
+        <argument key="App\Controller\OwnerController::edit" type="service_closure" id=".service_locator.Ti2bmpQ"/>
+        <argument key="App\Controller\OwnerController::index" type="service_closure" id=".service_locator.VueqrAN"/>
+        <argument key="App\Controller\OwnerController::show" type="service_closure" id=".service_locator.Ti2bmpQ"/>
+        <argument key="App\Controller\RegionController::delete" type="service_closure" id=".service_locator..2bsJdj"/>
+        <argument key="App\Controller\RegionController::edit" type="service_closure" id=".service_locator..2bsJdj"/>
+        <argument key="App\Controller\RegionController::index" type="service_closure" id=".service_locator.p4kW4vn"/>
+        <argument key="App\Controller\RegionController::show" type="service_closure" id=".service_locator..2bsJdj"/>
+        <argument key="App\Controller\RoomController::delete" type="service_closure" id=".service_locator.TBpXroA"/>
+        <argument key="App\Controller\RoomController::edit" type="service_closure" id=".service_locator.TBpXroA"/>
+        <argument key="App\Controller\RoomController::index" type="service_closure" id=".service_locator.zcKkgoO"/>
+        <argument key="App\Controller\RoomController::show" type="service_closure" id=".service_locator.TBpXroA"/>
+        <argument key="App\Controller\OwnerController:delete" type="service_closure" id=".service_locator.Ti2bmpQ"/>
+        <argument key="App\Controller\OwnerController:edit" type="service_closure" id=".service_locator.Ti2bmpQ"/>
+        <argument key="App\Controller\OwnerController:index" type="service_closure" id=".service_locator.VueqrAN"/>
+        <argument key="App\Controller\OwnerController:show" type="service_closure" id=".service_locator.Ti2bmpQ"/>
+        <argument key="App\Controller\RegionController:delete" type="service_closure" id=".service_locator..2bsJdj"/>
+        <argument key="App\Controller\RegionController:edit" type="service_closure" id=".service_locator..2bsJdj"/>
+        <argument key="App\Controller\RegionController:index" type="service_closure" id=".service_locator.p4kW4vn"/>
+        <argument key="App\Controller\RegionController:show" type="service_closure" id=".service_locator..2bsJdj"/>
+        <argument key="App\Controller\RoomController:delete" type="service_closure" id=".service_locator.TBpXroA"/>
+        <argument key="App\Controller\RoomController:edit" type="service_closure" id=".service_locator.TBpXroA"/>
+        <argument key="App\Controller\RoomController:index" type="service_closure" id=".service_locator.zcKkgoO"/>
+        <argument key="App\Controller\RoomController:show" type="service_closure" id=".service_locator.TBpXroA"/>
+      </argument>
     </service>
     <service id=".service_locator.Y7gDuDN" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
@@ -5295,9 +5414,12 @@
       <argument type="service" id="debug.argument_resolver.not_tagged_controller.inner"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.SFX6J7Y" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.6esiSvW" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Form\OwnerType" type="service_closure" id="App\Form\OwnerType"/>
+        <argument key="App\Form\RegionType" type="service_closure" id="App\Form\RegionType"/>
+        <argument key="App\Form\RoomType" type="service_closure" id="App\Form\RoomType"/>
         <argument key="Symfony\Bridge\Doctrine\Form\Type\EntityType" type="service_closure" id="form.type.entity"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\ChoiceType" type="service_closure" id="form.type.choice"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\FileType" type="service_closure" id="form.type.file"/>
@@ -5533,6 +5655,24 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.vdmMuyE" method="withContext"/>
     </service>
+    <service id=".service_locator.vdmMuyE.App\Controller\OwnerController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\OwnerController"/>
+      <argument>App\Controller\OwnerController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.vdmMuyE" method="withContext"/>
+    </service>
+    <service id=".service_locator.vdmMuyE.App\Controller\RegionController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\RegionController"/>
+      <argument>App\Controller\RegionController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.vdmMuyE" method="withContext"/>
+    </service>
+    <service id=".service_locator.vdmMuyE.App\Controller\RoomController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\RoomController"/>
+      <argument>App\Controller\RoomController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.vdmMuyE" method="withContext"/>
+    </service>
     <service id=".service_locator.XSes1R5" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -5679,12 +5819,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.I3K77mT"/>
+      <argument type="service" id=".service_locator.8QJm_1U"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.I3K77mT"/>
+      <argument type="service" id=".service_locator.8QJm_1U"/>
     </service>
     <service id=".debug.http_client.inner" class="Symfony\Contracts\HttpClient\HttpClientInterface" public="false">
       <argument type="collection"/>
@@ -5694,6 +5834,9 @@
       </call>
       <factory class="Symfony\Component\HttpClient\HttpClient" method="create"/>
     </service>
+    <service id=".errored..service_locator.Ti2bmpQ.App\Entity\Owner" class="App\Entity\Owner"/>
+    <service id=".errored..service_locator..2bsJdj.App\Entity\Region" class="App\Entity\Region"/>
+    <service id=".errored..service_locator.TBpXroA.App\Entity\Room" class="App\Entity\Room"/>
     <service id="console.command_loader" class="Symfony\Component\Console\CommandLoader\ContainerCommandLoader" public="true">
       <argument type="service" id=".service_locator.npLK9dQ"/>
       <argument type="collection">
@@ -6088,7 +6231,7 @@
     <service id="Symfony\Component\Security\Core\User\UserCheckerInterface" alias="security.user_checker" public="false"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.CmORmuK" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.I3K77mT"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.8QJm_1U"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
     <service id="Psr\Log\LoggerInterface $consoleLogger" alias="monolog.logger.console"/>

@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Editer Région{% endblock %}
+
+{% block main %}
+    <h1>Edition de la région</h1>
+
+    {{ include('region/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+
+    <a href="{{ path('region_index') }}" class='btn btn-outline-dark'>Retour à la liste</a>
+
+    {{ include('region/_delete_form.html.twig') }}
+{% endblock %}

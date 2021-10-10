@@ -11,7 +11,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 '/room/list',
             ],
             'name' => [
-                'room_index',
+                'room_index_old',
             ],
             'methods' => [
                 [

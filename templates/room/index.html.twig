@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des chambres{% endblock %}
+
+{% block main %}
+    <h1>Liste des chambres</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Résumé</th>
+                <th>Capacité</th>
+                <th>Superficie</th>
+                <th>Prix</th>
+                <th>Adresse</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for room in rooms %}
+            <tr>
+                <td>{{ room.id }}</td>
+                <td>{{ room.summary }}</td>
+                <td>{{ room.capacity }} personnes</td>
+                <td>{{ room.superficy }} m^2</td>
+                <td>{{ room.price }}€</td>
+                <td>{{ room.address }}</td>
+                <td>
+                    <a href="{{ path('room_show', {'id': room.id}) }}" class='btn btn-outline-info'>Voir</a>
+                    <a href="{{ path('room_edit', {'id': room.id}) }}" class='btn btn-outline-secondary'>Editer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">Aucune chambre trouvée</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('room_new') }}" class='btn btn-success'>Créer une nouvelle chambre</a>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Propriétaire : {{ owner.familyName }}{% endblock %}
+
+{% block main %}
+    <h1>M/Mme.{{ owner.familyName }}</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ owner.id }}</td>
+            </tr>
+            <tr>
+                <th>Prénom</th>
+                <td>{{ owner.firstname }}</td>
+            </tr>
+            <tr>
+                <th>Nom de famille</th>
+                <td>{{ owner.familyName }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ owner.address }}</td>
+            </tr>
+            <tr>
+                <th>Code pays</th>
+                <td>{{ owner.country }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('owner_index') }}" class='btn btn-outline-dark'>Retour à la liste</a>
+
+    <a href="{{ path('owner_edit', {'id': owner.id}) }}" class='btn btn-outline-secondary'>Editer</a>
+
+    {{ include('owner/_delete_form.html.twig') }}
+{% endblock %}

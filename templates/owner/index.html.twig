@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des propiétaires{% endblock %}
+
+{% block main %}
+    <h1>Liste des propriétaires</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Prénom</th>
+                <th>Nom de famille</th>
+                <th>Adresse</th>
+                <th>Code pays</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for owner in owners %}
+            <tr>
+                <td>{{ owner.id }}</td>
+                <td>{{ owner.firstname }}</td>
+                <td>{{ owner.familyName }}</td>
+                <td>{{ owner.address }}</td>
+                <td>{{ owner.country }}</td>
+                <td>
+                    <a href="{{ path('owner_show', {'id': owner.id}) }}" class='btn btn-outline-info'>Voir</a>
+                    <a href="{{ path('owner_edit', {'id': owner.id}) }}" class='btn btn-outline-secondary'>Editer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Aucun propriétaire trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('owner_new') }}" class='btn btn-success'>Créer un nouveau propriétaire</a>
+{% endblock %}
