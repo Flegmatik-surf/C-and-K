@@ -11,3 +11,6 @@ bootstrap_menu:
                 rooms:
                     label: 'Chambres'
                     route: 'room_index'
+                panier:
+                    label: 'Mon panier'
+                    route: 'room_panier'

@@ -10,7 +10,7 @@ use App\Entity\Room;
 
 /**
  * Controleur Todo
- * @Route("/agvoy")
+ * @Route("/")
  */
 class AgVoyController extends AbstractController
 {

@@ -18,8 +18,15 @@
             </tr>
         </thead>
         <tbody>
+        {% set panier = app.session.get('panier') %}
+        {% dump(panier) %}
+        
         {% for room in rooms %}
+        	{% if room.id in panier %}
+            <tr class="table-warning">
+            {% else %}
             <tr>
+            {% endif %}
                 <td>{{ room.id }}</td>
                 <td>{{ room.summary }}</td>
                 <td>{{ room.capacity }} personnes</td>
@@ -29,6 +36,7 @@
                 <td>
                     <a href="{{ path('room_show', {'id': room.id}) }}" class='btn btn-outline-info'>Voir</a>
                     <a href="{{ path('room_edit', {'id': room.id}) }}" class='btn btn-outline-secondary'>Editer</a>
+                    <a href="{{ path('room_mark', {'id': room.id}) }}" class='btn btn-outline-warning'>{% if room.id in panier %}Démarquer{% else %}Marquer{% endif %}</a>
                 </td>
             </tr>
         {% else %}

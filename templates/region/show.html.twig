@@ -24,16 +24,22 @@
     
     <br>
     <h3>Chambres de la région : </h3>
-    
+     {% set panier = app.session.get('panier') %}
+        {% dump(panier) %}
     {% if region.rooms == null %}
     <p>Aucune chambre pour l'instant</p>
     {% else %}
     	<table class="table table-borderless">
     		<tbody>
             {% for room in region.rooms %}
+            	{% if room.id in panier %}
+        		<tr class="table-warning">
+        		{% else %}
         		<tr>
+        		{% endif %}
         			<td>{{ room.summary }}<td>
         			<td><a href="{{ path('room_show', {'id': room.id}) }}" class='btn btn-outline-info'>Voir la chambre</a>
+        				<a href="{{ path('room_mark', {'id': room.id}) }}" class='btn btn-outline-warning'>{% if room.id in panier %}Démarquer{% else %}Marquer{% endif %}</a>
         		</tr>
             {% endfor %}
         	</tbody>

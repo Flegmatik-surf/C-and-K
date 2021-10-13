@@ -25,6 +25,16 @@ class RoomController extends AbstractController
             'rooms' => $roomRepository->findAll(),
         ]);
     }
+    
+    /**
+     * @Route("/panier", name="room_panier", methods={"GET"})
+     */
+    public function indexPanier(RoomRepository $roomRepository): Response
+    {
+        return $this->render('room/index_panier.html.twig', [
+            'rooms' => $roomRepository->findAll(),
+        ]);
+    }
 
     /**
      * @Route("/new", name="room_new", methods={"GET","POST"})
@@ -124,6 +134,36 @@ class RoomController extends AbstractController
             $entityManager->flush();
         }
 
+        return $this->redirectToRoute('room_index', [], Response::HTTP_SEE_OTHER);
+    }
+    
+    /**
+     * Marque une chambre dans la session de l'utilisateur 
+     *
+     * @Route("/mark/{id}", name="room_mark", requirements={ "id": "\d+"}, methods="GET")
+     */
+    public function markAction(Room $room): Response
+    {
+        $panier = $this->get('session')->get('panier');
+        // Si le tableau des rooms dans le panier n'existe pas on le créer:
+        if( ! is_array($panier) ){
+            $panier = array();
+        }
+        
+        $id = $room->getId();
+        //Si on marque  une seconde fois la room, on la retire du panier.
+        if( ! in_array($id, $panier) )
+        {
+            $panier[] = $id;
+        }
+        else
+        {
+            $panier = array_diff($panier, array($id));
+        }
+        
+        $this->get('session')->set('panier', $panier);
+        dump($panier);
+        
         return $this->redirectToRoute('room_index', [], Response::HTTP_SEE_OTHER);
     }
 }

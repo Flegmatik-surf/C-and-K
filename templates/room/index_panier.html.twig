@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon panier{% endblock %}
+
+{% block main %}
+    <h1>Mon Panier</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Résumé</th>
+                <th>Capacité</th>
+                <th>Superficie</th>
+                <th>Prix</th>
+                <th>Adresse</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% set panier = app.session.get('panier') %}
+        {% dump(panier) %}
+        
+        {% for room in rooms %}
+            {% if room.id in panier %}
+            <tr class="table-warning">
+                <td>{{ room.id }}</td>
+                <td>{{ room.summary }}</td>
+                <td>{{ room.capacity }} personnes</td>
+                <td>{{ room.superficy }} m^2</td>
+                <td>{{ room.price }}€</td>
+                <td>{{ room.address }}</td>
+                <td>
+                    <a href="{{ path('room_show', {'id': room.id}) }}" class='btn btn-outline-info'>Voir</a>
+                	<a href="{{ path('room_mark', {'id': room.id}) }}" class='btn btn-outline-warning'>{% if room.id in panier %}Démarquer{% else %}Marquer{% endif %}</a>
+                </td>
+            </tr>
+            {% endif %}
+        {% else %}
+            <tr>
+                <td colspan="8">Aucune chambre trouvée</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('room_index') }}" class='btn btn-outline-dark'>Liste complète des chambre</a>
+{% endblock %}

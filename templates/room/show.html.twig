@@ -67,7 +67,18 @@
     	<li>Code Pays : {{ room.owner.country }}</li>
     	{% endif %}
     </ul>
-
+    
+    {% set panier = app.session.get('panier') %}
+    {% dump(panier) %}
+    <br>
+    {% if room.id in panier %}
+    <h3>Dans le panier : OUI </h3>
+    {% else %}
+    <h3>Dans le panier : NON </h3>
+    {% endif %}
+    
+    <a href="{{ path('room_mark', {'id': room.id}) }}" class='btn btn-outline-warning'>{% if room.id in panier %}Démarquer{% else %}Marquer{% endif %}</a>
+	<br><br><br>
     <a href="{{ path('room_index') }}" class='btn btn-outline-dark'>Retour à la liste</a>
 
     <a href="{{ path('room_edit', {'id': room.id}) }}" class='btn btn-outline-secondary'>Editer</a>
