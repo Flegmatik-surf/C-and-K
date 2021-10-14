@@ -127,17 +127,23 @@ class __TwigTemplate_dc1283a5cd38160e49dd8ba2fbc0e04869582b0a979bd105df18461298a
             // line 26
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("region_show", ["id" => twig_get_attribute($this->env, $this->source, $context["region"], "id", [], "any", false, false, false, 26)]), "html", null, true);
             echo "\" class='btn btn-outline-info'>Voir</a>
-                    <a href=\"";
+                    ";
             // line 27
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("region_edit", ["id" => twig_get_attribute($this->env, $this->source, $context["region"], "id", [], "any", false, false, false, 27)]), "html", null, true);
-            echo "\" class='btn btn-outline-secondary'>Editer</a>
-                </td>
+            if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_ADMIN")) {
+                // line 28
+                echo "                    <a href=\"";
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("region_edit", ["id" => twig_get_attribute($this->env, $this->source, $context["region"], "id", [], "any", false, false, false, 28)]), "html", null, true);
+                echo "\" class='btn btn-outline-secondary'>Editer</a>
+                    ";
+            }
+            // line 30
+            echo "                </td>
             </tr>
         ";
             $context['_iterated'] = true;
         }
         if (!$context['_iterated']) {
-            // line 31
+            // line 33
             echo "            <tr>
                 <td colspan=\"5\">Aucune région trouvée</td>
             </tr>
@@ -146,15 +152,18 @@ class __TwigTemplate_dc1283a5cd38160e49dd8ba2fbc0e04869582b0a979bd105df18461298a
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['region'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 35
+        // line 37
         echo "        </tbody>
     </table>
-
-    <a href=\"";
-        // line 38
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("region_new");
-        echo "\" class='btn btn-success'>Creér une nouvelle région</a>
-";
+\t";
+        // line 39
+        if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_ADMIN")) {
+            // line 40
+            echo "    <a href=\"";
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("region_new");
+            echo "\" class='btn btn-success'>Creér une nouvelle région</a>
+    ";
+        }
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
 
@@ -175,7 +184,7 @@ class __TwigTemplate_dc1283a5cd38160e49dd8ba2fbc0e04869582b0a979bd105df18461298a
 
     public function getDebugInfo()
     {
-        return array (  155 => 38,  150 => 35,  141 => 31,  132 => 27,  128 => 26,  123 => 24,  119 => 23,  115 => 22,  111 => 21,  108 => 20,  103 => 19,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  162 => 40,  160 => 39,  156 => 37,  147 => 33,  140 => 30,  134 => 28,  132 => 27,  128 => 26,  123 => 24,  119 => 23,  115 => 22,  111 => 21,  108 => 20,  103 => 19,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -206,7 +215,9 @@ class __TwigTemplate_dc1283a5cd38160e49dd8ba2fbc0e04869582b0a979bd105df18461298a
                 <td>{{ region.country }}</td>
                 <td>
                     <a href=\"{{ path('region_show', {'id': region.id}) }}\" class='btn btn-outline-info'>Voir</a>
+                    {% if is_granted('ROLE_ADMIN') %}
                     <a href=\"{{ path('region_edit', {'id': region.id}) }}\" class='btn btn-outline-secondary'>Editer</a>
+                    {% endif %}
                 </td>
             </tr>
         {% else %}
@@ -216,8 +227,9 @@ class __TwigTemplate_dc1283a5cd38160e49dd8ba2fbc0e04869582b0a979bd105df18461298a
         {% endfor %}
         </tbody>
     </table>
-
+\t{% if is_granted('ROLE_ADMIN') %}
     <a href=\"{{ path('region_new') }}\" class='btn btn-success'>Creér une nouvelle région</a>
+    {% endif %}
 {% endblock %}
 ", "region/index.html.twig", "/Users/alexandrelaferrere/Desktop/TSP/Cours/Informatique/CSC_4101/Projet/proj-agvoy/agvoy-app/templates/region/index.html.twig");
     }

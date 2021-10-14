@@ -132,17 +132,23 @@ class __TwigTemplate_7e8fd7123c73b07d15246566aaff2aa2a2865e2aca5f51aafa48ba56586
             // line 28
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("owner_show", ["id" => twig_get_attribute($this->env, $this->source, $context["owner"], "id", [], "any", false, false, false, 28)]), "html", null, true);
             echo "\" class='btn btn-outline-info'>Voir</a>
-                    <a href=\"";
+                    ";
             // line 29
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("owner_edit", ["id" => twig_get_attribute($this->env, $this->source, $context["owner"], "id", [], "any", false, false, false, 29)]), "html", null, true);
-            echo "\" class='btn btn-outline-secondary'>Editer</a>
-                </td>
+            if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_ADMIN")) {
+                // line 30
+                echo "                    <a href=\"";
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("owner_edit", ["id" => twig_get_attribute($this->env, $this->source, $context["owner"], "id", [], "any", false, false, false, 30)]), "html", null, true);
+                echo "\" class='btn btn-outline-secondary'>Editer</a>
+               \t\t";
+            }
+            // line 32
+            echo "                </td>
             </tr>
         ";
             $context['_iterated'] = true;
         }
         if (!$context['_iterated']) {
-            // line 33
+            // line 35
             echo "            <tr>
                 <td colspan=\"6\">Aucun propriétaire trouvé</td>
             </tr>
@@ -151,15 +157,18 @@ class __TwigTemplate_7e8fd7123c73b07d15246566aaff2aa2a2865e2aca5f51aafa48ba56586
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['owner'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 37
+        // line 39
         echo "        </tbody>
     </table>
-
-    <a href=\"";
-        // line 40
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("owner_new");
-        echo "\" class='btn btn-success'>Créer un nouveau propriétaire</a>
-";
+\t";
+        // line 41
+        if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_ADMIN")) {
+            // line 42
+            echo "    <a href=\"";
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("owner_new");
+            echo "\" class='btn btn-success'>Créer un nouveau propriétaire</a>
+    ";
+        }
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
 
@@ -180,7 +189,7 @@ class __TwigTemplate_7e8fd7123c73b07d15246566aaff2aa2a2865e2aca5f51aafa48ba56586
 
     public function getDebugInfo()
     {
-        return array (  160 => 40,  155 => 37,  146 => 33,  137 => 29,  133 => 28,  128 => 26,  124 => 25,  120 => 24,  116 => 23,  112 => 22,  109 => 21,  104 => 20,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  167 => 42,  165 => 41,  161 => 39,  152 => 35,  145 => 32,  139 => 30,  137 => 29,  133 => 28,  128 => 26,  124 => 25,  120 => 24,  116 => 23,  112 => 22,  109 => 21,  104 => 20,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -213,7 +222,9 @@ class __TwigTemplate_7e8fd7123c73b07d15246566aaff2aa2a2865e2aca5f51aafa48ba56586
                 <td>{{ owner.country }}</td>
                 <td>
                     <a href=\"{{ path('owner_show', {'id': owner.id}) }}\" class='btn btn-outline-info'>Voir</a>
+                    {% if is_granted('ROLE_ADMIN') %}
                     <a href=\"{{ path('owner_edit', {'id': owner.id}) }}\" class='btn btn-outline-secondary'>Editer</a>
+               \t\t{% endif %}
                 </td>
             </tr>
         {% else %}
@@ -223,8 +234,9 @@ class __TwigTemplate_7e8fd7123c73b07d15246566aaff2aa2a2865e2aca5f51aafa48ba56586
         {% endfor %}
         </tbody>
     </table>
-
+\t{% if is_granted('ROLE_ADMIN') %}
     <a href=\"{{ path('owner_new') }}\" class='btn btn-success'>Créer un nouveau propriétaire</a>
+    {% endif %}
 {% endblock %}
 ", "owner/index.html.twig", "/Users/alexandrelaferrere/Desktop/TSP/Cours/Informatique/CSC_4101/Projet/proj-agvoy/agvoy-app/templates/owner/index.html.twig");
     }

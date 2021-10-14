@@ -80,8 +80,8 @@
     <a href="{{ path('room_mark', {'id': room.id}) }}" class='btn btn-outline-warning'>{% if room.id in panier %}Démarquer{% else %}Marquer{% endif %}</a>
 	<br><br><br>
     <a href="{{ path('room_index') }}" class='btn btn-outline-dark'>Retour à la liste</a>
-
+	{% if is_granted('ROLE_USER') %}
     <a href="{{ path('room_edit', {'id': room.id}) }}" class='btn btn-outline-secondary'>Editer</a>
-
     {{ include('room/_delete_form.html.twig') }}
+    {% endif %}
 {% endblock %}

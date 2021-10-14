@@ -73,12 +73,12 @@ class __TwigTemplate_2791e4a05beaa6eda77aab90534722986d8dede84fd865849084c78e43b
     \t";
         // line 22
         $this->displayBlock('menu', $context, $blocks);
-        // line 36
+        // line 49
         echo "    \t
         ";
-        // line 37
+        // line 50
         $this->displayBlock('body', $context, $blocks);
-        // line 69
+        // line 82
         echo "    </body>
 </html>
 ";
@@ -188,7 +188,33 @@ class __TwigTemplate_2791e4a05beaa6eda77aab90534722986d8dede84fd865849084c78e43b
         echo "
     \t\t\t\t</ul>
     \t\t\t</div>
-    \t\t</div>
+    \t\t\t";
+        // line 33
+        if (twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 33, $this->source); })()), "user", [], "any", false, false, false, 33)) {
+            // line 34
+            echo "    \t\t\t<div class=\"collapse navbar-collapse\" id=\"navbarsAccountDefault\">
+     \t\t\t\t<ul class=\"navbar-nav ml-auto\">
+    \t\t\t";
+            // line 36
+            echo $this->extensions['Camurphy\BootstrapMenuBundle\Twig\Extension\MenuExtension']->renderMenu($this->env, "account");
+            echo "
+     \t\t\t\t</ul>
+\t\t\t\t</div>
+    \t\t\t";
+        } else {
+            // line 40
+            echo "    \t\t\t<div class=\"collapse navbar-collapse\" id=\"navbarsAnonAccountDefault\">
+     \t\t\t\t<ul class=\"navbar-nav ml-auto\">
+                         ";
+            // line 42
+            echo $this->extensions['Camurphy\BootstrapMenuBundle\Twig\Extension\MenuExtension']->renderMenu($this->env, "anonymousaccount");
+            echo "
+     \t\t\t\t</ul>
+\t\t\t\t</div>
+    \t\t\t";
+        }
+        // line 46
+        echo "    \t\t</div>
     \t</nav>
     \t";
         
@@ -199,7 +225,7 @@ class __TwigTemplate_2791e4a05beaa6eda77aab90534722986d8dede84fd865849084c78e43b
 
     }
 
-    // line 37
+    // line 50
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -209,27 +235,27 @@ class __TwigTemplate_2791e4a05beaa6eda77aab90534722986d8dede84fd865849084c78e43b
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 38
+        // line 51
         echo "        
         ";
-        // line 39
+        // line 52
         $this->displayBlock('alerts', $context, $blocks);
-        // line 54
+        // line 67
         echo " ";
-        // line 55
+        // line 68
         echo "        
         
         
         \t";
-        // line 58
+        // line 71
         $this->displayBlock('main', $context, $blocks);
-        // line 61
+        // line 74
         echo "        \t
         \t
         \t";
-        // line 63
+        // line 76
         $this->displayBlock('footer', $context, $blocks);
-        // line 66
+        // line 79
         echo "        \t
         
         ";
@@ -241,7 +267,7 @@ class __TwigTemplate_2791e4a05beaa6eda77aab90534722986d8dede84fd865849084c78e43b
 
     }
 
-    // line 39
+    // line 52
     public function block_alerts($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -251,33 +277,33 @@ class __TwigTemplate_2791e4a05beaa6eda77aab90534722986d8dede84fd865849084c78e43b
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "alerts"));
 
-        // line 40
+        // line 53
         echo "          ";
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 40, $this->source); })()), "session", [], "any", false, false, false, 40), "flashBag", [], "any", false, false, false, 40), "all", [], "any", false, false, false, 40));
+        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 53, $this->source); })()), "session", [], "any", false, false, false, 53), "flashBag", [], "any", false, false, false, 53), "all", [], "any", false, false, false, 53));
         foreach ($context['_seq'] as $context["type"] => $context["messages"]) {
-            // line 41
+            // line 54
             echo "            ";
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable($context["messages"]);
             foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
-                // line 42
+                // line 55
                 echo "                ";
                 if ((0 === twig_compare($context["type"], "error"))) {
                     echo " ";
                     $context["type"] = "danger";
                     echo " ";
                 }
-                // line 43
+                // line 56
                 echo "                ";
                 if ((0 === twig_compare($context["type"], "message"))) {
                     echo " ";
                     $context["type"] = "info";
                     echo " ";
                 }
-                // line 44
+                // line 57
                 echo "                ";
-                // line 45
+                // line 58
                 echo "        \t\t<div class=\"alert alert-";
                 echo twig_escape_filter($this->env, $context["type"], "html", null, true);
                 echo " alert-dismissible fade show\" role=\"alert\">
@@ -286,7 +312,7 @@ class __TwigTemplate_2791e4a05beaa6eda77aab90534722986d8dede84fd865849084c78e43b
                 \t\t<span class=\"sr-only\">Close</span>
             \t\t</button>
            \t\t <p>";
-                // line 50
+                // line 63
                 echo $context["message"];
                 echo "</p>
         \t\t</div>
@@ -295,13 +321,13 @@ class __TwigTemplate_2791e4a05beaa6eda77aab90534722986d8dede84fd865849084c78e43b
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['message'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 53
+            // line 66
             echo "          ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['type'], $context['messages'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 54
+        // line 67
         echo "        ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -311,7 +337,7 @@ class __TwigTemplate_2791e4a05beaa6eda77aab90534722986d8dede84fd865849084c78e43b
 
     }
 
-    // line 58
+    // line 71
     public function block_main($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -321,7 +347,7 @@ class __TwigTemplate_2791e4a05beaa6eda77aab90534722986d8dede84fd865849084c78e43b
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "main"));
 
-        // line 59
+        // line 72
         echo "        \t
         \t";
         
@@ -332,7 +358,7 @@ class __TwigTemplate_2791e4a05beaa6eda77aab90534722986d8dede84fd865849084c78e43b
 
     }
 
-    // line 63
+    // line 76
     public function block_footer($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -342,7 +368,7 @@ class __TwigTemplate_2791e4a05beaa6eda77aab90534722986d8dede84fd865849084c78e43b
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "footer"));
 
-        // line 64
+        // line 77
         echo "        \t
         \t";
         
@@ -360,7 +386,7 @@ class __TwigTemplate_2791e4a05beaa6eda77aab90534722986d8dede84fd865849084c78e43b
 
     public function getDebugInfo()
     {
-        return array (  346 => 64,  336 => 63,  325 => 59,  315 => 58,  305 => 54,  299 => 53,  290 => 50,  281 => 45,  279 => 44,  272 => 43,  265 => 42,  260 => 41,  255 => 40,  245 => 39,  233 => 66,  231 => 63,  227 => 61,  225 => 58,  220 => 55,  218 => 54,  216 => 39,  213 => 38,  203 => 37,  187 => 30,  180 => 26,  175 => 23,  165 => 22,  153 => 18,  148 => 15,  138 => 14,  126 => 11,  123 => 10,  113 => 9,  94 => 5,  82 => 69,  80 => 37,  77 => 36,  75 => 22,  71 => 20,  69 => 14,  66 => 13,  64 => 9,  61 => 8,  57 => 5,  51 => 1,);
+        return array (  372 => 77,  362 => 76,  351 => 72,  341 => 71,  331 => 67,  325 => 66,  316 => 63,  307 => 58,  305 => 57,  298 => 56,  291 => 55,  286 => 54,  281 => 53,  271 => 52,  259 => 79,  257 => 76,  253 => 74,  251 => 71,  246 => 68,  244 => 67,  242 => 52,  239 => 51,  229 => 50,  217 => 46,  210 => 42,  206 => 40,  199 => 36,  195 => 34,  193 => 33,  187 => 30,  180 => 26,  175 => 23,  165 => 22,  153 => 18,  148 => 15,  138 => 14,  126 => 11,  123 => 10,  113 => 9,  94 => 5,  82 => 82,  80 => 50,  77 => 49,  75 => 22,  71 => 20,  69 => 14,  66 => 13,  64 => 9,  61 => 8,  57 => 5,  51 => 1,);
     }
 
     public function getSourceContext()
@@ -397,6 +423,19 @@ class __TwigTemplate_2791e4a05beaa6eda77aab90534722986d8dede84fd865849084c78e43b
     \t\t\t        {{ render_bootstrap_menu('main') }}
     \t\t\t\t</ul>
     \t\t\t</div>
+    \t\t\t{% if app.user %}
+    \t\t\t<div class=\"collapse navbar-collapse\" id=\"navbarsAccountDefault\">
+     \t\t\t\t<ul class=\"navbar-nav ml-auto\">
+    \t\t\t{{ render_bootstrap_menu('account') }}
+     \t\t\t\t</ul>
+\t\t\t\t</div>
+    \t\t\t{% else %}
+    \t\t\t<div class=\"collapse navbar-collapse\" id=\"navbarsAnonAccountDefault\">
+     \t\t\t\t<ul class=\"navbar-nav ml-auto\">
+                         {{ render_bootstrap_menu('anonymousaccount') }}
+     \t\t\t\t</ul>
+\t\t\t\t</div>
+    \t\t\t{% endif %}
     \t\t</div>
     \t</nav>
     \t{% endblock %}{# menu de navigation #}

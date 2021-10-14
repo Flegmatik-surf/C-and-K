@@ -250,17 +250,19 @@ class __TwigTemplate_2d17c290aacb1b6a52899b6d24f3cd93a9da5bbe4da30e6f4c6f26a170a
         // line 82
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("room_index");
         echo "\" class='btn btn-outline-dark'>Retour à la liste</a>
-
-    <a href=\"";
-        // line 84
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("room_edit", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["room"]) || array_key_exists("room", $context) ? $context["room"] : (function () { throw new RuntimeError('Variable "room" does not exist.', 84, $this->source); })()), "id", [], "any", false, false, false, 84)]), "html", null, true);
-        echo "\" class='btn btn-outline-secondary'>Editer</a>
-
+\t";
+        // line 83
+        if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_USER")) {
+            // line 84
+            echo "    <a href=\"";
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("room_edit", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["room"]) || array_key_exists("room", $context) ? $context["room"] : (function () { throw new RuntimeError('Variable "room" does not exist.', 84, $this->source); })()), "id", [], "any", false, false, false, 84)]), "html", null, true);
+            echo "\" class='btn btn-outline-secondary'>Editer</a>
     ";
-        // line 86
-        echo twig_include($this->env, $context, "room/_delete_form.html.twig");
-        echo "
-";
+            // line 85
+            echo twig_include($this->env, $context, "room/_delete_form.html.twig");
+            echo "
+    ";
+        }
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
 
@@ -281,7 +283,7 @@ class __TwigTemplate_2d17c290aacb1b6a52899b6d24f3cd93a9da5bbe4da30e6f4c6f26a170a
 
     public function getDebugInfo()
     {
-        return array (  261 => 86,  256 => 84,  251 => 82,  240 => 80,  237 => 79,  233 => 77,  229 => 75,  227 => 74,  224 => 73,  219 => 72,  217 => 71,  213 => 69,  207 => 67,  204 => 66,  198 => 64,  196 => 63,  192 => 62,  186 => 58,  181 => 55,  172 => 52,  168 => 51,  165 => 50,  161 => 49,  157 => 47,  153 => 45,  151 => 44,  140 => 36,  133 => 32,  126 => 28,  119 => 24,  112 => 20,  105 => 16,  98 => 12,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  262 => 85,  257 => 84,  255 => 83,  251 => 82,  240 => 80,  237 => 79,  233 => 77,  229 => 75,  227 => 74,  224 => 73,  219 => 72,  217 => 71,  213 => 69,  207 => 67,  204 => 66,  198 => 64,  196 => 63,  192 => 62,  186 => 58,  181 => 55,  172 => 52,  168 => 51,  165 => 50,  161 => 49,  157 => 47,  153 => 45,  151 => 44,  140 => 36,  133 => 32,  126 => 28,  119 => 24,  112 => 20,  105 => 16,  98 => 12,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -368,10 +370,10 @@ class __TwigTemplate_2d17c290aacb1b6a52899b6d24f3cd93a9da5bbe4da30e6f4c6f26a170a
     <a href=\"{{ path('room_mark', {'id': room.id}) }}\" class='btn btn-outline-warning'>{% if room.id in panier %}Démarquer{% else %}Marquer{% endif %}</a>
 \t<br><br><br>
     <a href=\"{{ path('room_index') }}\" class='btn btn-outline-dark'>Retour à la liste</a>
-
+\t{% if is_granted('ROLE_USER') %}
     <a href=\"{{ path('room_edit', {'id': room.id}) }}\" class='btn btn-outline-secondary'>Editer</a>
-
     {{ include('room/_delete_form.html.twig') }}
+    {% endif %}
 {% endblock %}
 ", "room/show.html.twig", "/Users/alexandrelaferrere/Desktop/TSP/Cours/Informatique/CSC_4101/Projet/proj-agvoy/agvoy-app/templates/room/show.html.twig");
     }

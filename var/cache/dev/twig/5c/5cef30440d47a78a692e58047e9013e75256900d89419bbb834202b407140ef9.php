@@ -186,17 +186,19 @@ class __TwigTemplate_56033545b8048ff205d1a5d7a99a80ea20a2b622e08511073821402233b
         // line 49
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("region_index");
         echo "\" class='btn btn-outline-dark'>Retour à la liste</a>
-
-    <a href=\"";
-        // line 51
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("region_edit", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["region"]) || array_key_exists("region", $context) ? $context["region"] : (function () { throw new RuntimeError('Variable "region" does not exist.', 51, $this->source); })()), "id", [], "any", false, false, false, 51)]), "html", null, true);
-        echo "\" class='btn btn-outline-secondary'>Editer</a>
-
+\t";
+        // line 50
+        if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_ADMIN")) {
+            // line 51
+            echo "    <a href=\"";
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("region_edit", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["region"]) || array_key_exists("region", $context) ? $context["region"] : (function () { throw new RuntimeError('Variable "region" does not exist.', 51, $this->source); })()), "id", [], "any", false, false, false, 51)]), "html", null, true);
+            echo "\" class='btn btn-outline-secondary'>Editer</a>
     ";
-        // line 53
-        echo twig_include($this->env, $context, "region/_delete_form.html.twig");
-        echo "
-";
+            // line 52
+            echo twig_include($this->env, $context, "region/_delete_form.html.twig");
+            echo "
+    ";
+        }
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
 
@@ -217,7 +219,7 @@ class __TwigTemplate_56033545b8048ff205d1a5d7a99a80ea20a2b622e08511073821402233b
 
     public function getDebugInfo()
     {
-        return array (  197 => 53,  192 => 51,  187 => 49,  184 => 48,  179 => 45,  164 => 42,  160 => 41,  155 => 40,  151 => 38,  147 => 36,  144 => 35,  140 => 34,  136 => 32,  132 => 30,  129 => 29,  124 => 28,  122 => 27,  112 => 20,  105 => 16,  98 => 12,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  198 => 52,  193 => 51,  191 => 50,  187 => 49,  184 => 48,  179 => 45,  164 => 42,  160 => 41,  155 => 40,  151 => 38,  147 => 36,  144 => 35,  140 => 34,  136 => 32,  132 => 30,  129 => 29,  124 => 28,  122 => 27,  112 => 20,  105 => 16,  98 => 12,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -271,10 +273,10 @@ class __TwigTemplate_56033545b8048ff205d1a5d7a99a80ea20a2b622e08511073821402233b
     {% endif %}
 
     <a href=\"{{ path('region_index') }}\" class='btn btn-outline-dark'>Retour à la liste</a>
-
+\t{% if is_granted('ROLE_ADMIN') %}
     <a href=\"{{ path('region_edit', {'id': region.id}) }}\" class='btn btn-outline-secondary'>Editer</a>
-
     {{ include('region/_delete_form.html.twig') }}
+    {% endif %}
 {% endblock %}
 ", "region/show.html.twig", "/Users/alexandrelaferrere/Desktop/TSP/Cours/Informatique/CSC_4101/Projet/proj-agvoy/agvoy-app/templates/region/show.html.twig");
     }

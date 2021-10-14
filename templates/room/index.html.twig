@@ -35,7 +35,9 @@
                 <td>{{ room.address }}</td>
                 <td>
                     <a href="{{ path('room_show', {'id': room.id}) }}" class='btn btn-outline-info'>Voir</a>
+                    {% if is_granted('ROLE_USER') %}
                     <a href="{{ path('room_edit', {'id': room.id}) }}" class='btn btn-outline-secondary'>Editer</a>
+                    {% endif %}
                     <a href="{{ path('room_mark', {'id': room.id}) }}" class='btn btn-outline-warning'>{% if room.id in panier %}Démarquer{% else %}Marquer{% endif %}</a>
                 </td>
             </tr>
@@ -46,6 +48,7 @@
         {% endfor %}
         </tbody>
     </table>
-
+	{% if is_granted('ROLE_USER') %}
     <a href="{{ path('room_new') }}" class='btn btn-success'>Créer une nouvelle chambre</a>
+    {% endif %}
 {% endblock %}

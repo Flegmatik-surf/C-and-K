@@ -14,6 +14,8 @@ class AppFixtures extends Fixture
     public const IDF_REGION_REFERENCE = 'idf-region';
     public const ALEX_OWNER_REFERENCE = 'alex-owner';
     
+    
+    
     public function load(ObjectManager $manager)
     {
         //...

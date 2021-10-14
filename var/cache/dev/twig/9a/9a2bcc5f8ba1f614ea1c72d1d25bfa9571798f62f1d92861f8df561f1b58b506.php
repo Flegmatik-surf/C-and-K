@@ -190,16 +190,19 @@ class __TwigTemplate_8e13f631a5f022e43f90faeee4e3ee862ad65a86928de29532d0be72b76
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("owner_index");
         echo "\" class='btn btn-outline-dark'>Retour à la liste</a>
 
-    <a href=\"";
-        // line 63
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("owner_edit", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["owner"]) || array_key_exists("owner", $context) ? $context["owner"] : (function () { throw new RuntimeError('Variable "owner" does not exist.', 63, $this->source); })()), "id", [], "any", false, false, false, 63)]), "html", null, true);
-        echo "\" class='btn btn-outline-secondary'>Editer</a>
-
     ";
-        // line 65
-        echo twig_include($this->env, $context, "owner/_delete_form.html.twig");
-        echo "
-";
+        // line 63
+        if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_ADMIN")) {
+            // line 64
+            echo "    <a href=\"";
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("owner_edit", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["owner"]) || array_key_exists("owner", $context) ? $context["owner"] : (function () { throw new RuntimeError('Variable "owner" does not exist.', 64, $this->source); })()), "id", [], "any", false, false, false, 64)]), "html", null, true);
+            echo "\" class='btn btn-outline-secondary'>Editer</a>
+    ";
+            // line 65
+            echo twig_include($this->env, $context, "owner/_delete_form.html.twig");
+            echo "
+    ";
+        }
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
 
@@ -220,7 +223,7 @@ class __TwigTemplate_8e13f631a5f022e43f90faeee4e3ee862ad65a86928de29532d0be72b76
 
     public function getDebugInfo()
     {
-        return array (  200 => 65,  195 => 63,  190 => 61,  177 => 51,  174 => 50,  165 => 47,  161 => 46,  158 => 45,  154 => 44,  150 => 42,  146 => 40,  144 => 39,  134 => 32,  127 => 28,  120 => 24,  113 => 20,  106 => 16,  99 => 12,  89 => 6,  79 => 5,  59 => 3,  36 => 1,);
+        return array (  202 => 65,  197 => 64,  195 => 63,  190 => 61,  177 => 51,  174 => 50,  165 => 47,  161 => 46,  158 => 45,  154 => 44,  150 => 42,  146 => 40,  144 => 39,  134 => 32,  127 => 28,  120 => 24,  113 => 20,  106 => 16,  99 => 12,  89 => 6,  79 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -287,9 +290,10 @@ class __TwigTemplate_8e13f631a5f022e43f90faeee4e3ee862ad65a86928de29532d0be72b76
 
     <a href=\"{{ path('owner_index') }}\" class='btn btn-outline-dark'>Retour à la liste</a>
 
+    {% if is_granted('ROLE_ADMIN') %}
     <a href=\"{{ path('owner_edit', {'id': owner.id}) }}\" class='btn btn-outline-secondary'>Editer</a>
-
     {{ include('owner/_delete_form.html.twig') }}
+    {% endif %}
 {% endblock %}
 ", "owner/show.html.twig", "/Users/alexandrelaferrere/Desktop/TSP/Cours/Informatique/CSC_4101/Projet/proj-agvoy/agvoy-app/templates/owner/show.html.twig");
     }

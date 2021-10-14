@@ -34,4 +34,6 @@ return [
     'room_edit' => [['id'], ['_controller' => 'App\\Controller\\RoomController::edit'], [], [['text', '/edit'], ['variable', '/', '[^/]++', 'id'], ['text', '/room']], [], []],
     'room_delete' => [['id'], ['_controller' => 'App\\Controller\\RoomController::delete'], [], [['variable', '/', '[^/]++', 'id'], ['text', '/room']], [], []],
     'room_mark' => [['id'], ['_controller' => 'App\\Controller\\RoomController::markAction'], ['id' => '\\d+'], [['variable', '/', '\\d+', 'id'], ['text', '/room/mark']], [], []],
+    'app_login' => [[], ['_controller' => 'App\\Controller\\SecurityController::login'], [], [['text', '/login']], [], []],
+    'app_logout' => [[], ['_controller' => 'App\\Controller\\SecurityController::logout'], [], [['text', '/logout']], [], []],
 ];

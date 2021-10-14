@@ -156,15 +156,20 @@ class __TwigTemplate_aa494f3af1ada7ed42d0801fad886d96e1d47c68690d6266eaaec19a5c1
             // line 37
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("room_show", ["id" => twig_get_attribute($this->env, $this->source, $context["room"], "id", [], "any", false, false, false, 37)]), "html", null, true);
             echo "\" class='btn btn-outline-info'>Voir</a>
-                    <a href=\"";
+                    ";
             // line 38
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("room_edit", ["id" => twig_get_attribute($this->env, $this->source, $context["room"], "id", [], "any", false, false, false, 38)]), "html", null, true);
-            echo "\" class='btn btn-outline-secondary'>Editer</a>
-                    <a href=\"";
-            // line 39
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("room_mark", ["id" => twig_get_attribute($this->env, $this->source, $context["room"], "id", [], "any", false, false, false, 39)]), "html", null, true);
+            if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_USER")) {
+                // line 39
+                echo "                    <a href=\"";
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("room_edit", ["id" => twig_get_attribute($this->env, $this->source, $context["room"], "id", [], "any", false, false, false, 39)]), "html", null, true);
+                echo "\" class='btn btn-outline-secondary'>Editer</a>
+                    ";
+            }
+            // line 41
+            echo "                    <a href=\"";
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("room_mark", ["id" => twig_get_attribute($this->env, $this->source, $context["room"], "id", [], "any", false, false, false, 41)]), "html", null, true);
             echo "\" class='btn btn-outline-warning'>";
-            if (twig_in_filter(twig_get_attribute($this->env, $this->source, $context["room"], "id", [], "any", false, false, false, 39), (isset($context["panier"]) || array_key_exists("panier", $context) ? $context["panier"] : (function () { throw new RuntimeError('Variable "panier" does not exist.', 39, $this->source); })()))) {
+            if (twig_in_filter(twig_get_attribute($this->env, $this->source, $context["room"], "id", [], "any", false, false, false, 41), (isset($context["panier"]) || array_key_exists("panier", $context) ? $context["panier"] : (function () { throw new RuntimeError('Variable "panier" does not exist.', 41, $this->source); })()))) {
                 echo "Démarquer";
             } else {
                 echo "Marquer";
@@ -176,7 +181,7 @@ class __TwigTemplate_aa494f3af1ada7ed42d0801fad886d96e1d47c68690d6266eaaec19a5c1
             $context['_iterated'] = true;
         }
         if (!$context['_iterated']) {
-            // line 43
+            // line 45
             echo "            <tr>
                 <td colspan=\"8\">Aucune chambre trouvée</td>
             </tr>
@@ -185,15 +190,18 @@ class __TwigTemplate_aa494f3af1ada7ed42d0801fad886d96e1d47c68690d6266eaaec19a5c1
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['room'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 47
+        // line 49
         echo "        </tbody>
     </table>
-
-    <a href=\"";
-        // line 50
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("room_new");
-        echo "\" class='btn btn-success'>Créer une nouvelle chambre</a>
-";
+\t";
+        // line 51
+        if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_USER")) {
+            // line 52
+            echo "    <a href=\"";
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("room_new");
+            echo "\" class='btn btn-success'>Créer une nouvelle chambre</a>
+    ";
+        }
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
 
@@ -214,7 +222,7 @@ class __TwigTemplate_aa494f3af1ada7ed42d0801fad886d96e1d47c68690d6266eaaec19a5c1
 
     public function getDebugInfo()
     {
-        return array (  194 => 50,  189 => 47,  180 => 43,  165 => 39,  161 => 38,  157 => 37,  152 => 35,  148 => 34,  144 => 33,  140 => 32,  136 => 31,  131 => 30,  127 => 28,  123 => 26,  120 => 25,  115 => 24,  112 => 23,  107 => 22,  105 => 21,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  200 => 52,  198 => 51,  194 => 49,  185 => 45,  169 => 41,  163 => 39,  161 => 38,  157 => 37,  152 => 35,  148 => 34,  144 => 33,  140 => 32,  136 => 31,  131 => 30,  127 => 28,  123 => 26,  120 => 25,  115 => 24,  112 => 23,  107 => 22,  105 => 21,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -256,7 +264,9 @@ class __TwigTemplate_aa494f3af1ada7ed42d0801fad886d96e1d47c68690d6266eaaec19a5c1
                 <td>{{ room.address }}</td>
                 <td>
                     <a href=\"{{ path('room_show', {'id': room.id}) }}\" class='btn btn-outline-info'>Voir</a>
+                    {% if is_granted('ROLE_USER') %}
                     <a href=\"{{ path('room_edit', {'id': room.id}) }}\" class='btn btn-outline-secondary'>Editer</a>
+                    {% endif %}
                     <a href=\"{{ path('room_mark', {'id': room.id}) }}\" class='btn btn-outline-warning'>{% if room.id in panier %}Démarquer{% else %}Marquer{% endif %}</a>
                 </td>
             </tr>
@@ -267,8 +277,9 @@ class __TwigTemplate_aa494f3af1ada7ed42d0801fad886d96e1d47c68690d6266eaaec19a5c1
         {% endfor %}
         </tbody>
     </table>
-
+\t{% if is_granted('ROLE_USER') %}
     <a href=\"{{ path('room_new') }}\" class='btn btn-success'>Créer une nouvelle chambre</a>
+    {% endif %}
 {% endblock %}
 ", "room/index.html.twig", "/Users/alexandrelaferrere/Desktop/TSP/Cours/Informatique/CSC_4101/Projet/proj-agvoy/agvoy-app/templates/room/index.html.twig");
     }

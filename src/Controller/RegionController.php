@@ -9,7 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 /**
  * @Route("/region")
  */
@@ -27,6 +27,7 @@ class RegionController extends AbstractController
 
     /**
      * @Route("/new", name="region_new", methods={"GET","POST"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function new(Request $request): Response
     {
@@ -62,6 +63,7 @@ class RegionController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="region_edit", methods={"GET","POST"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function edit(Request $request, Region $region): Response
     {
@@ -84,6 +86,7 @@ class RegionController extends AbstractController
 
     /**
      * @Route("/{id}", name="region_delete", methods={"POST"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function delete(Request $request, Region $region): Response
     {
